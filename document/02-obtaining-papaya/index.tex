@@ -1,0 +1,77 @@
+\section{Obtaining Papaya}\label{sec:obtaining-papaya}
+
+\subsection{Downloading pre-built artifacts}\label{subsec:downloading-pre-built-artifacts}
+
+Pre-built artifacts are available under the ``GitHub Releases'' pages of the
+Papaya project repositories:
+\begin{itemize}
+    \item Backend:
+    \href{https://github.com/papaya-agh/papaya-backend/releases}{papaya-agh/papaya-backend}
+
+    \item Frontend:
+    \href{https://github.com/papaya-agh/papaya-frontend/releases}{papaya-agh/papaya-frontend}
+\end{itemize}
+
+\emph{Note: the downloaded Frontend will be pre-configured to search for Keycloak under \texttt{/auth}.}
+
+\subsection{Building from source}\label{subsec:building-from-source}
+
+\subsubsection*{Papaya Backend}
+
+\begin{enumerate}
+    \item Clone the GitHub repository:
+    \begin{lstlisting}[gobble=8]
+        git clone https://github.com/papaya-agh/papaya-backend
+        cd papaya-backend
+    \end{lstlisting}
+
+    \item Build the project using Gradle wrapper:
+    \begin{lstlisting}[gobble=8]
+        ./gradlew build -x test
+    \end{lstlisting}
+
+    \item (optional) Build the bootable JAR file:
+    \begin{lstlisting}[gobble=8]
+        ./gradlew bootJar -x test
+    \end{lstlisting}
+\end{enumerate}
+
+After those steps, the artifacts are available at
+\texttt{./papaya-web/build/libs/}.
+
+\subsubsection*{Papaya Frontend}
+
+\begin{enumerate}
+    \item Clone the GitHub repository:
+    \begin{lstlisting}[gobble=8]
+        git clone https://github.com/papaya-agh/papaya-frontend
+    \end{lstlisting}
+
+    \item Initialize submodules:
+    \begin{lstlisting}[gobble=8]
+        cd papaya-frontend
+        git submodule init
+    \end{lstlisting}
+
+    \item Install Angular and other dependencies:
+    \begin{lstlisting}[gobble=8]
+        npm install -g @angular/cli
+        npm install
+    \end{lstlisting}
+
+    \item Generate required code:
+    \begin{lstlisting}[gobble=8]
+        npm run generate.declarations
+    \end{lstlisting}
+
+    \item (optional) Set Keycloak URL, realm, and client ID in
+    \texttt{src/environments/environment.prod.ts}
+
+    \item Build and create the desired .war file:
+    \begin{lstlisting}[gobble=8]
+        ng build --prod
+        npm run war
+    \end{lstlisting}
+\end{enumerate}
+
+After those steps, the artifact is available at \texttt{./dist/}.

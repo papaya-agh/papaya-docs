@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+    \node[draw, circle] (f) at (2, 3) {Frontend};
+    \node[draw, circle] (b) at (0, 0) {Backend};
+    \node[draw, circle] (k) at (4, 0) {Keycloak};
+    \draw[->, >=latex] (f) -- (k);
+    \draw[->, >=latex] (f) -- (b);
+    \draw[->, >=latex] (b) -- (k);
+\end{tikzpicture}

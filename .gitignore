@@ -5,3 +5,5 @@
 *.log
 *.xdv
 *.fdb_latexmk
+*.out
+*.toc

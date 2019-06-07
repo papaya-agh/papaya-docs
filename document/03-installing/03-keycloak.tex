@@ -1,0 +1,45 @@
+\subsection{Installing Keycloak}\label{subsec:installing-keycloak}
+
+\emph{Note: It is preferred to use an existing instance of Keycloak
+if possible.}
+
+Information about Keycloak installation is available at:
+\url{https://www.keycloak.org/documentation.html}.
+
+
+\subsection{Configuring Keycloak}\label{subsec:configuring-keycloak}
+
+Papaya requires:
+\begin{itemize}
+    \item a client with ID \texttt{papaya-web},
+    \item a user with name \texttt{papaya-cli}
+    and role \texttt{realm-management/view-users}.
+\end{itemize}
+
+\subsubsection*{Configure \texttt{papaya-web}}
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item log into the Keycloak admin console,
+    \item select ``Clients'' tab,
+    \item press ``Create'' button,
+    \item set \texttt{papaya-web} as ``Client ID'',
+    \item press ``Save''.
+\end{enumerate}
+
+\subsubsection*{Configure \texttt{papaya-cli}}
+
+\begin{enumerate}
+    \setlength\itemsep{0em}
+    \item log into the Keycloak admin console,
+    \item select ``Users'' tab,
+    \item press ``Add user'' button,
+    \item set \texttt{papaya-cli} as ``Username'',
+    \item press ``Save'',
+    \item select ``Credentials'' tab,
+    \item set a password configured in the Papaya Backend setup,
+    \item select ``Role Mappings'' tab,
+    \item select ``realm-management'' from ``Client Roles'',
+    \item select ``view-users'' from ``Available Roles'',
+    \item  press ``Add selected''.
+\end{enumerate}
