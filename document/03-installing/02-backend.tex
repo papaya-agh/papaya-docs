@@ -1,0 +1,91 @@
+\subsection{Installing Papaya Backend}\label{subsec:installing-papaya-backend}
+
+Papaya Backend provides two ways of launching: using WAR deployment or
+a bootable JAR\@.
+Normally the bootable JAR is easier to use and set up.
+However, the WAR deployment allows more advanced setups.
+
+\subsubsection{Using bootable JAR}
+
+In order to launch Papaya Backend using bootable JAR, it's enough to launch
+the JAR file:
+
+\begin{lstlisting}
+    java -jar papaya-web.jar
+\end{lstlisting}
+
+See~\ref{subsec:configuring-papaya-backend} for configuration details.
+
+
+\subsubsection{Using deployable WAR}
+
+In order to launch Papaya Backend using deployable WAR, an application server,
+such as Tomcat, is needed.
+
+\begin{enumerate}
+    \item Move \texttt{papaya-web.war} to
+    \texttt{\$CATALINA\_BASE/webapps/api.war},
+
+    \item Run Tomcat using \texttt{\$CATALINA\_BASE/bin/startup.sh}.
+\end{enumerate}
+
+After the steps above, Papaya Backend should be deployed under \texttt{/api}
+on the Tomcat server.
+
+Further information about Tomcat configuration is available at:
+\url{http://tomcat.apache.org/tomcat-9.0-doc/index.html}.
+
+It is possible and advisable to deploy both Papaya Frontend and Papaya Backend
+on the same server, as it greatly simplifies further configuration.
+
+See~\ref{subsec:configuring-papaya-backend} for configuration details.
+
+
+\subsection{Configuring Papaya Backend}\label{subsec:configuring-papaya-backend}
+
+Generally it is possible to configure Papaya Backend using either environment
+variables or replacing a configuration file.
+
+\subsubsection*{Environment variables}
+
+Before running the Papaya Backend the following environment variables may be
+configured:
+
+\begin{itemize}
+    \setlength\itemsep{0em}
+    \item \texttt{PAPAYA\_DB\_URL} (example: \texttt{jdbc:postgresql://localhost:5432/papaya\_db}) \\
+    Database URL \\
+    \item \texttt{PAPAYA\_DB\_USERNAME} (example: \texttt{postgres}) \\
+    Database user name
+    \item \texttt{PAPAYA\_DB\_PASSWORD} (example: \texttt{postgres}) \\
+    Database user password
+    \item \texttt{PAPAYA\_EMAIL\_HOST} (example: \texttt{smtp.example.com}) \\
+    SMTP server address user for sending emails
+    \item \texttt{PAPAYA\_EMAIL\_ADDRESS} (example: \texttt{example@example.com}) \\
+    Email address used as a sender in sent emails
+    \item \texttt{PAPAYA\_EMAIL\_PASSWORD} (example: \texttt{example}) \\
+    \item \texttt{PAPAYA\_EMAIL\_PORT} (example: \texttt{587}) \\
+    Port of the SMTP server
+    \item \texttt{PAPAYA\_KEYCLOAK\_REALM} (example: \texttt{papaya}) \\
+    Keycloak realm used for authentication
+    \item \texttt{PAPAYA\_KEYCLOAK\_ADDR} (example: \texttt{http://localhost:9990/auth}) \\
+    Keycloak server address
+    \item \texttt{PAPAYA\_KEYCLOAK\_CLIENT} (example: \texttt{papaya-web}) \\
+    Keycloak client ID used by Papaya
+    \item \texttt{PAPAYA\_KEYCLOAK\_SSL\_REQUIRED} (example: \texttt{none}) \\
+    SSL configuration for Keycloak
+    \item \texttt{PAPAYA\_KEYCLOAK\_CLIENT\_SECRET} (example: \texttt{d3dERmmALg62evkS}) \\
+    If client requires a secret, the value configured here will be used therein
+    \item \texttt{PAPAYA\_KEYCLOAK\_CLIENT\_USERNAME} (example: \texttt{papaya-cli}) \\
+    Name of the service user used by Papaya Backend to access Keycloak data
+    \item \texttt{PAPAYA\_KEYCLOAK\_CLIENT\_PASSWORD} (example: \texttt{papaya}) \\
+    Password of the service user
+    \item \texttt{JIRA\_AUTH\_PRIVATE\_KEY}  \\
+    \item \texttt{JIRA\_AUTH\_PUBLIC\_KEY}  \\
+\end{itemize}
+
+\subsubsection*{Configuration file}
+
+Inside the Papaya Backed deployment, it is possible to override the file
+\texttt{WEB-INF/classes/application-prod.properties}
+which contains all the above configuration and set the values manually.

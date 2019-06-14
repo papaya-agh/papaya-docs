@@ -1,0 +1,36 @@
+\subsection{Installing Papaya Frontend}\label{subsec:installing-papaya-frontend}
+
+The only requirement of the web application is to be deployed under the root
+context path, i.e. \texttt{/}.
+
+\subsubsection*{Tomcat setup}
+
+\begin{enumerate}
+    \item Remove \texttt{ROOT} and \texttt{ROOT.war} from
+    \texttt{\$CATALINA\_BASE/webapps/} if present,
+
+    \item Move \texttt{papaya-frontend.war} to
+    \texttt{\$CATALINA\_BASE/webapps/ROOT.war},
+
+    \item Run Tomcat using \texttt{\$CATALINA\_BASE/bin/startup.sh}.
+\end{enumerate}
+
+After the steps above, Papaya Frontend should be deployed under \texttt{/}
+on the Tomcat server.
+
+Further information about Tomcat configuration is available at:
+\url{http://tomcat.apache.org/tomcat-9.0-doc/index.html}.
+
+\subsubsection*{Wildfly setup}
+
+\begin{enumerate}
+    \item Move \texttt{papaya-frontend.war} to
+    \texttt{\$WILDFLY\_HOME/standalone/deployments/},
+
+    \item Run Wildfly using \texttt{\$WILDFLY\_HOME/bin/standalone.sh}.
+\end{enumerate}
+
+The artifact is already preconfigured to be deployed under root context path.
+
+Further information about Wildfly configuration is available at:
+\url{https://docs.wildfly.org/17/}.
